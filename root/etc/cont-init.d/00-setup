@@ -1,0 +1,10 @@
+#!/usr/bin/with-contenv sh
+
+# Add samba share group.
+addgroup -g $PGID sambashare
+
+# Add our user.
+adduser -D -H -s /bin/false -G sambashare -u $PUID $SAMBAUSER
+
+# Set the password.
+echo -e $SAMBAPASS"\n"$SAMBAPASS | smbpasswd -a -s -c /etc/samba/smb.conf $SAMBAUSER
