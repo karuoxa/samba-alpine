@@ -42,6 +42,10 @@ Example smb.conf
       -e SAMBAPASS=mysambapass \
       -e PUID=1000 \
       -e PGID=1000 \
+      -p 137:137/udp \
+      -p 138:138/udp \
+      -p 139:139/tcp \
+      -p 445:445/tcp \
       -v /path/to/file/smb.conf:/etc/samba/smb.conf \
       -v /path/to/share:/mnt/share \
       --restart unless-stopped \
